@@ -1,8 +1,8 @@
 // =============================================
 // VERSION UPDATE
-// UPDATE TERAKHIR 14 Juli 2024 JAM 00:00 WIB
+// UPDATE TERAKHIR 23 Agustus 2024 JAM 00:00 WIB
 // WEBSITE : autoresbot.com
-// VERSION : 3.3
+// VERSION : 3.3.1
 // =============================================
 
 
