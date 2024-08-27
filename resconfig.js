@@ -1,8 +1,8 @@
 // =============================================
 // VERSION UPDATE
-// UPDATE TERAKHIR 23 Agustus 2024 JAM 00:00 WIB
+// UPDATE TERAKHIR 28 Agustus 2024 JAM 00:00 WIB
 // WEBSITE : autoresbot.com
-// VERSION : 3.3.1
+// VERSION : 3.5
 // =============================================
 
 
@@ -11,7 +11,7 @@ const path=require("path"),fs=require("fs"),chalk=require("chalk"),moment=requir
 const config = {
     botDestination  : 'group', // group |  private | both
     region       	: 'indonesia',
-    resbot_version  : 'Autoresbot v3.3',
+    resbot_version  : 'Autoresbot v3.5',
     apikey_resbot   : 'APIKEY_GRATIS', // apikey beli di autoresbot.com
     nomorsuperOwner : '6285246154386',
     grup            : 'https://whatsapp.com/channel/0029VabMgUy9MF99bWrYja2Q',
@@ -51,12 +51,28 @@ const config = {
         tebakbendera : 'https://telegra.ph/file/d982a966ba17ee035807c.jpg',
         tebakgambar  : 'https://telegra.ph/file/e9107d96769831a17ee21.jpg',
         tebaklagu    : 'https://telegra.ph/file/d96c459b9605d6fab4284.jpg'
+    },
+    PANEL            : {
+        URL             : '', // https://panel.contoh.com
+        KEY_APPLICATION : '', // ambil di panel : ptla_xxxxx
+        SERVER_EGG      : '15',
+        port_range      : '1900-2000',
+        id_location     : '5', // id location -> ambil di panel
+        cpu_default     : 90, // unlimited ganti 0
+        disk_default    : 5120, // 5 gb || unlimited ganti 0
+        description     : 'Jika Ada Pertanyaan Hubungi Telegram Admin : https://t.me/autoresbot_com',
+        access          : 'owner' , // owner, premium,
+    },
+    BACKUP          : {
+        autobackup : false, // true atau false
+        autosendwa : true
     }
 };
 
 
 
 module.exports = config;
+
 let file = path.resolve(__filename);
 fs.watchFile(file,(()=>{fs.unwatchFile(file),console.log(`${chalk.greenBright.bold("UPDATE FILE "+file)} ${chalk.redBright.bold("PLEASE RESTART THIS SERVER")}`),delete require.cache[file],require(file)}));
 

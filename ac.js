@@ -1,8 +1,8 @@
 // =============================================
 // VERSION UPDATE
-// UPDATE TERAKHIR 23 Agustus 2024 JAM 00:00 WIB
+// UPDATE TERAKHIR 28 Agustus 2024 JAM 00:00 WIB
 // WEBSITE : autoresbot.com
-// VERSION : 3.3.1
+// VERSION : 3.5
 // =============================================
 
 
@@ -20,7 +20,7 @@ global.mess = {
   bot: "_🤖 Fitur Khusus Pengguna Nomor Bot !_",
   wait: "_⏳ Sedang Di Proses !_",
   error: "_🚫 Fitur Sedang Error !_",
-  premiu: "_🚫 Fitur Khusus Premium!\n\n♨️ Buy Premium Chat Owner_",
+  premium: "🚫 Fitur Khusus Premium!\n\n♨️ _Buy Premium Chat Owner_",
   notlink: "_Mana Linknya ❗_",
   gagal: "_🚫 Gagal kak!_",
   urlnotvalid: "_🚫 Link Tidak Valid_",

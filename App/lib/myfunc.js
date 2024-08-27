@@ -231,9 +231,15 @@ exports.smsg = (conn, m, store) => {
     if (m.message) {
         m.mtype = getContentType(m.message)
         m.msg = (m.mtype == 'viewOnceMessage' ? m.message[m.mtype].message[getContentType(m.message[m.mtype].message)] : m.message[m.mtype])
-        m.body = m.message.conversation || m.msg.caption || m.msg.text || (m.mtype == 'listResponseMessage') && m.msg.singleSelectReply.selectedRowId || (m.mtype == 'buttonsResponseMessage') && m.msg.selectedButtonId || (m.mtype == 'viewOnceMessage') && m.msg.caption || m.text
-        let quoted = m.quoted = m.msg.contextInfo ? m.msg.contextInfo.quotedMessage : null
-        m.mentionedJid = m.msg.contextInfo ? m.msg.contextInfo.mentionedJid : []
+        m.body = m.message?.conversation || m.msg?.caption || m.msg?.text || 
+         (m.mtype === 'listResponseMessage' && m.msg?.singleSelectReply?.selectedRowId) || 
+         (m.mtype === 'buttonsResponseMessage' && m.msg?.selectedButtonId) || 
+         (m.mtype === 'viewOnceMessage' && m.msg?.caption) || 
+         m.text;
+
+        let quoted = m.quoted = m.msg?.contextInfo ? m.msg.contextInfo.quotedMessage : null;
+        m.mentionedJid = m.msg && m.msg.contextInfo ? m.msg.contextInfo.mentionedJid : [];
+
         if (m.quoted) {
             let type = Object.keys(m.quoted)[0]
 			m.quoted = m.quoted[type]
@@ -289,8 +295,22 @@ exports.smsg = (conn, m, store) => {
             m.quoted.download = () => conn.downloadMediaMessage(m.quoted)
         }
     }
-    if (m.msg.url) m.download = () => conn.downloadMediaMessage(m.msg)
-    m.text = m.msg.text || m.msg.caption || m.message.conversation || m.msg.contentText || m.msg.selectedDisplayText || m.msg.title || ''
+// Memastikan m.msg terdefinisi
+if (m.msg) {
+    // Jika m.msg.url ada, set m.download untuk mendownload pesan media
+    if (m.msg.url) {
+        m.download = () => conn.downloadMediaMessage(m.msg);
+    }
+
+    // Menetapkan m.text dengan urutan prioritas yang benar dan memastikan m.msg ada
+    m.text = m.msg.text || 
+             m.msg.caption || 
+             m.message?.conversation || 
+             m.msg.contentText || 
+             m.msg.selectedDisplayText || 
+             m.msg.title || 
+             '';
+}
     /**
 	* Reply to this message
 	* @param {String|Object} text 
